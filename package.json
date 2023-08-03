@@ -2,10 +2,13 @@
   "name": "rocketseat-yt-ia4devs-buscasemantica",
   "version": "1.0.0",
   "scripts": {
+    "docker": "docker run -d --rm --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest",
+    "docker:stop": "docker stop redis-stack",
     "load": "tsx src/loader.ts",
     "start": "tsx src/index.ts"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "langchain": "^0.0.121",
     "redis": "^4.6.7"
   },

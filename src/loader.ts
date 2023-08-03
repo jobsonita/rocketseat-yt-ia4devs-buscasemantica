@@ -1,8 +1,12 @@
+import 'dotenv/config';
 import path from 'node:path';
 
 import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
 import { JSONLoader } from 'langchain/document_loaders/fs/json';
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { TokenTextSplitter } from 'langchain/text_splitter';
+import { RedisVectorStore } from 'langchain/vectorstores/redis';
+import { createClient } from 'redis';
 
 const loader = new DirectoryLoader(
   path.join(__dirname, './assets/pokedex/'),
@@ -22,7 +26,23 @@ async function load() {
 
   const splittedDocuments = await splitter.splitDocuments(docs);
 
-  console.log(splittedDocuments);
+  const redis = createClient({
+    url: 'redis://127.0.0.1:6379'
+  });
+
+  await redis.connect();
+
+  await RedisVectorStore.fromDocuments(
+    splittedDocuments,
+    new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY }),
+    {
+      indexName: 'pokedex-embeddings',
+      redisClient: redis,
+      keyPrefix: 'pokedex:'
+    }
+  );
+
+  await redis.disconnect();
 }
 
 load();

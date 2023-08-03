@@ -1,0 +1,17 @@
+{
+  "name": "rocketseat-yt-ia4devs-buscasemantica",
+  "version": "1.0.0",
+  "scripts": {
+    "load": "tsx src/loader.ts",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "langchain": "^0.0.121",
+    "redis": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.6",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  }
+}

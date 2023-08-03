@@ -1,0 +1,115 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"installDockerBuildx": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v1"
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "npm install",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.minimap.enabled": false,
+				"editor.renderLineHighlight": "gutter",
+				"editor.rulers": [ 80, 120 ],
+				"extensions.ignoreRecommendations": true,
+				"files.associations": {
+					".env.*": "dotenv"
+				},
+				"files.eol": "\n",
+				"git.autofetch": true,
+				"git.confirmSync": false,
+				"material-icon-theme.activeIconPack": "nest",
+				"material-icon-theme.files.associations": {
+					"*.webpack.js": "webpack",
+					"tsconfig.json": "tune",
+					"routes.ts": "routing"
+				},
+				"material-icon-theme.languages.associations": {
+					"dotenv": "tune"
+				},
+				"workbench.iconTheme": "material-icon-theme",
+				"javascript.suggest.autoImports": true,
+				"typescript.suggest.autoImports": true,
+				"javascript.updateImportsOnFileMove.enabled": "never",
+				"typescript.updateImportsOnFileMove.enabled": "never",
+				"[javascript]": {
+					"editor.codeActionsOnSave": {
+						"source.fixAll.eslint": true,
+						"source.organizeImports": true
+					},
+					"editor.defaultFormatter": "vscode.typescript-language-features",
+					"editor.formatOnSave": true,
+					"editor.formatOnPaste": true,
+					"editor.insertSpaces": true,
+					"editor.tabSize": 2
+				},
+				"[typescript]": {
+					"editor.codeActionsOnSave": {
+						"source.fixAll.eslint": true,
+						"source.organizeImports": true
+					},
+					"editor.defaultFormatter": "vscode.typescript-language-features",
+					"editor.formatOnSave": true,
+					"editor.formatOnPaste": true,
+					"editor.insertSpaces": true,
+					"editor.tabSize": 2
+				},
+				"json.format.keepLines": true,
+				"[json]": {
+					"editor.codeActionsOnSave": {
+						"source.fixAll": true
+					},
+					"editor.defaultFormatter": "vscode.json-language-features",
+					"editor.formatOnSave": true,
+					"editor.formatOnPaste": true,
+					"editor.insertSpaces": false,
+					"editor.tabSize": 4,
+					"files.insertFinalNewline": true,
+					"files.trimFinalNewlines": true,
+					"files.trimTrailingWhitespace": true
+				},
+				"[jsonc]": {
+					"editor.codeActionsOnSave": {
+						"source.fixAll": true
+					},
+					"editor.defaultFormatter": "vscode.json-language-features",
+					"editor.formatOnSave": true,
+					"editor.formatOnPaste": true,
+					"editor.insertSpaces": false,
+					"editor.tabSize": 4,
+					"files.insertFinalNewline": true,
+					"files.trimFinalNewlines": true,
+					"files.trimTrailingWhitespace": true
+				}
+			},
+			"extensions": [
+				"PKief.material-icon-theme",
+				"EditorConfig.EditorConfig",
+				"mikestead.dotenv",
+				"eamodio.gitlens",
+				"dbaeumer.vscode-eslint",
+				"clinyong.vscode-css-modules"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

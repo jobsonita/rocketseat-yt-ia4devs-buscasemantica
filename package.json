@@ -5,7 +5,8 @@
     "docker": "docker run -d --rm --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest",
     "docker:stop": "docker stop redis-stack",
     "load": "tsx src/loader.ts",
-    "start": "tsx src/index.ts"
+    "search": "tsx src/search.ts",
+    "gpt": "tsx src/gpt.ts"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
